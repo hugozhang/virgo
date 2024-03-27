@@ -5,8 +5,8 @@ import org.joo.virgo.model.ExecutionResult;
 
 public class IfExecutionNode implements ExecutionNode {
 
-	private ExpressionExecutionNode condition;
-	private ExecutionNode action;
+	private final ExpressionExecutionNode condition;
+	private final ExecutionNode action;
 
 	public IfExecutionNode(ExpressionExecutionNode condition, ExecutionNode action) {
 		this.condition = condition;

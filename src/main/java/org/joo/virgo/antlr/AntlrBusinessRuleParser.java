@@ -6,6 +6,7 @@ import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.ConsoleErrorListener;
 import org.antlr.v4.runtime.RecognitionException;
 import org.antlr.v4.runtime.Recognizer;
+import org.joo.libra.PredicateContext;
 import org.joo.libra.support.exceptions.MalformedSyntaxException;
 import org.joo.virgo.antlr.grammar.BusinessRuleLexer;
 import org.joo.virgo.antlr.grammar.BusinessRuleParser;
@@ -27,8 +28,8 @@ public class AntlrBusinessRuleParser extends AbstractAntlrBusinessRuleParser<Bus
 		return parser;
 	}
 
-	protected ExecutionNode doParse(final BusinessRuleParser parser) {
-		AntlrBusinessRuleVisitor visitor = new AntlrBusinessRuleVisitor();
+	protected ExecutionNode doParse(final BusinessRuleParser parser,final PredicateContext context) {
+		AntlrBusinessRuleVisitor visitor = new AntlrBusinessRuleVisitor(context);
 		return visitor.visit(parser.businessRule());
 	}
 }

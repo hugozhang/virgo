@@ -1,5 +1,6 @@
 package org.joo.virgo.antlr;
 
+import org.joo.libra.PredicateContext;
 import org.joo.virgo.antlr.grammar.BusinessRuleParser;
 import org.joo.virgo.node.AssignExecutionNode;
 import org.joo.virgo.node.ElseExecutionNode;
@@ -9,7 +10,11 @@ import org.joo.virgo.node.IfExecutionNode;
 import org.joo.virgo.node.MultiActionsExecutionNode;
 
 public class AntlrBusinessRuleVisitor extends AbstractAntlrBusinessRuleVisitor {
-	
+
+	public AntlrBusinessRuleVisitor(PredicateContext context) {
+		super(context);
+	}
+
 	@Override
 	public ExecutionNode visitMultiActionsCtx(BusinessRuleParser.MultiActionsCtxContext ctx) {
 		ExecutionNode left = (ExecutionNode) visit(ctx.left);

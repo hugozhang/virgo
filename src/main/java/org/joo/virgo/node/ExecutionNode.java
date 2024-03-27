@@ -5,5 +5,5 @@ import org.joo.virgo.model.ExecutionResult;
 
 public interface ExecutionNode  {
 
-	public boolean execute(RuleContext context, ExecutionResult result);
+ 	 boolean execute(RuleContext context, ExecutionResult result);
 }

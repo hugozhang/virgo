@@ -5,8 +5,8 @@ import org.joo.virgo.model.ExecutionResult;
 
 public class AssignExecutionNode implements ExecutionNode {
 
-	private String variableName;
-	private ExpressionExecutionNode expression;
+	private final String variableName;
+	private final ExpressionExecutionNode expression;
 
 	public AssignExecutionNode(String variableName, ExpressionExecutionNode expression) {
 		this.variableName = variableName;
@@ -15,7 +15,8 @@ public class AssignExecutionNode implements ExecutionNode {
 
 	@Override
 	public boolean execute(RuleContext context, ExecutionResult result) {
-		Object literalValue = expression.getPredicate().calculateLiteralValue(context);
+		Object literalValue = expression.getPredicate().calculateLiteralValue(context); //expression.execute(context,result);
+
 		result.getResults().put(variableName, literalValue);
 		return true;
 	}

@@ -5,8 +5,8 @@ import org.joo.virgo.model.ExecutionResult;
 
 public class ElseExecutionNode implements ExecutionNode {
 
-	private ExecutionNode leftPhrase;
-	private ExecutionNode rightPhrase;
+	private final ExecutionNode leftPhrase;
+	private final ExecutionNode rightPhrase;
 
 	public ElseExecutionNode(ExecutionNode leftPhrase, ExecutionNode rightPhrase) {
 		this.leftPhrase = leftPhrase;

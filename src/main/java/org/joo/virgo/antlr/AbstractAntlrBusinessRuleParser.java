@@ -5,12 +5,13 @@ import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.Parser;
+import org.joo.libra.PredicateContext;
 import org.joo.virgo.node.ExecutionNode;
 
 public abstract class AbstractAntlrBusinessRuleParser<L extends Lexer, P extends Parser> implements BusinessRuleParser {
 
 	@Override
-	public ExecutionNode parse(final String predicate) {
+	public ExecutionNode parse(final String predicate, PredicateContext context) {
 		CharStream stream = CharStreams.fromString(predicate);
 
 		Lexer lexer = createLexer(stream);
@@ -19,12 +20,12 @@ public abstract class AbstractAntlrBusinessRuleParser<L extends Lexer, P extends
 
 		P parser = createParser(tokens);
 
-		return doParse(parser);
+		return doParse(parser,context);
 	}
 
 	protected abstract L createLexer(CharStream stream);
 
 	protected abstract P createParser(CommonTokenStream tokens);
 
-	protected abstract ExecutionNode doParse(P parser);
+	protected abstract ExecutionNode doParse(P parser,PredicateContext context);
 }

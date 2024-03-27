@@ -22,10 +22,8 @@ public class MultiBusinessRule implements BusinessRule {
 	public Optional<ExecutionResult> execute(RuleContext context) {
 		Map<String, Object> tmpResult = new HashMap<>();
 		for (BusinessRule rule : rules) {
-			ExecutionResult result = rule.execute(context).orElse(null);
-			if (result != null)
-				tmpResult.putAll(result.getResults());
-		}
+            rule.execute(context).ifPresent(result -> tmpResult.putAll(result.getResults()));
+        }
 		return Optional.of(new DefaultExecutionResult(Collections.unmodifiableMap(tmpResult)));
 	}
 }

@@ -6,7 +6,7 @@ public class DefaultExecutionResult implements ExecutionResult {
 	
 	private static final long serialVersionUID = -6136404921288441513L;
 	
-	private Map<String, Object> results;
+	private final Map<String, Object> results;
 
 	public DefaultExecutionResult(final Map<String, Object> results) {
 		this.results = results;

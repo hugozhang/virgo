@@ -3,12 +3,21 @@ package org.joo.virgo.antlr;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.misc.Interval;
+import org.joo.libra.PredicateContext;
 import org.joo.virgo.antlr.grammar.BusinessRuleParser;
 import org.joo.virgo.antlr.grammar.BusinessRuleParserBaseVisitor;
 import org.joo.virgo.node.ExecutionNode;
 import org.joo.virgo.node.ExpressionExecutionNode;
 
 public abstract class AbstractAntlrBusinessRuleVisitor extends BusinessRuleParserBaseVisitor<ExecutionNode> {
+
+
+    private final PredicateContext context;
+
+    public AbstractAntlrBusinessRuleVisitor(PredicateContext context) {
+        this.context = context;
+    }
+
 
     @Override
     public ExecutionNode visitConditionalExpr(final BusinessRuleParser.ConditionalExprContext ctx) {
@@ -124,6 +133,6 @@ public abstract class AbstractAntlrBusinessRuleVisitor extends BusinessRuleParse
         CharStream cs = ctx.start.getTokenSource().getInputStream();
         int stopIndex = ctx.stop != null ? ctx.stop.getStopIndex() : -1;
 
-        return new ExpressionExecutionNode(cs.getText(new Interval(ctx.start.getStartIndex(), stopIndex)));
+        return new ExpressionExecutionNode(cs.getText(new Interval(ctx.start.getStartIndex(), stopIndex)),context);
     }
 }
