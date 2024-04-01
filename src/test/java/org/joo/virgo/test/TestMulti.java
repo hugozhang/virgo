@@ -17,9 +17,9 @@ import org.junit.runners.Parameterized.Parameters;
 @RunWith(Parameterized.class)
 public class TestMulti {
 
-	private String[] values;
-	private String name;
-	private Object expected;
+	private final String[] values;
+	private final String name;
+	private final Object expected;
 
 	public TestMulti(String[] values, String name, Object expected) {
 		this.values = values;
@@ -27,15 +27,15 @@ public class TestMulti {
 		this.expected = expected;
 	}
 	
-//	@Test
-//	public void testSimple() {
-//		BusinessRule rule = new MultiBusinessRule(Arrays.stream(values).map(DefaultBusinessRule::new).toArray(size -> new BusinessRule[size]));
-//		ExecutionResult result = rule.execute(null).orElseThrow(() -> new NullPointerException("result is null"));
-//		if (name == null)
-//			Assert.assertEquals(expected, result.getValue());
-//		else
-//			Assert.assertEquals(expected, result.getValue(name));
-//	}
+	@Test
+	public void testSimple() {
+		BusinessRule rule = new MultiBusinessRule(Arrays.stream(values).map(DefaultBusinessRule::new).toArray(size -> new BusinessRule[size]));
+		ExecutionResult result = rule.execute(null).orElseThrow(() -> new NullPointerException("result is null"));
+		if (name == null)
+			Assert.assertEquals(expected, result.getValue());
+		else
+			Assert.assertEquals(expected, result.getValue(name));
+	}
 	
 	@Parameters
 	public static List<Object[]> data() {
