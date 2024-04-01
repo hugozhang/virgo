@@ -54,26 +54,35 @@ public class TestSimple {
 
 		RuleContext context = new RuleContext(user);
 
-		BusinessRule rule1 = new DefaultBusinessRule("if age > 1  then set result = '年龄大于1'",context);
-		ExecutionResult result1 = rule1.execute(context).orElseThrow(() -> new NullPointerException("result is null"));
-		Object resultValue1 = result1.getValue("result");
-		if(resultValue1 != null) {
-			result.add(user.getName() + "," + resultValue1);
+		BusinessRule rule0 = new DefaultBusinessRule("if  birthday > birthday2  then set result = '生日birthday > birthday2' else set result = '生日birthday 不大于 birthday2'");
+		ExecutionResult result0 = rule0.execute(context).orElseThrow(() -> new NullPointerException("result is null"));
+		Object resultValue0 = result0.getValue("result");
+		if(resultValue0 != null) {
+			result.add(user.getName() + "," + resultValue0);
 		}
 
-		BusinessRule rule2 = new DefaultBusinessRule("if age == 1  then set result = '年龄等于1'",context);
-		ExecutionResult result2 = rule2.execute(context).orElseThrow(() -> new NullPointerException("result is null"));
-		Object resultValue2 = result2.getValue("result");
-		if(resultValue2 != null) {
-			result.add(user.getName() + "," + resultValue2);
-		}
 
-		BusinessRule rule3 = new DefaultBusinessRule("if age < 1  then set result = '年龄小于1'",context);
-		ExecutionResult result3 = rule3.execute(context).orElseThrow(() -> new NullPointerException("result is null"));
-		Object resultValue3 = result3.getValue("result");
-		if(resultValue3 != null) {
-			result.add(user.getName() + "," + resultValue3);
-		}
+//
+//		BusinessRule rule1 = new DefaultBusinessRule("if age > 1  then set result = '年龄大于1'");
+//		ExecutionResult result1 = rule1.execute(context).orElseThrow(() -> new NullPointerException("result is null"));
+//		Object resultValue1 = result1.getValue("result");
+//		if(resultValue1 != null) {
+//			result.add(user.getName() + "," + resultValue1);
+//		}
+//
+//		BusinessRule rule2 = new DefaultBusinessRule("if age == 1  then set result = '年龄等于1'");
+//		ExecutionResult result2 = rule2.execute(context).orElseThrow(() -> new NullPointerException("result is null"));
+//		Object resultValue2 = result2.getValue("result");
+//		if(resultValue2 != null) {
+//			result.add(user.getName() + "," + resultValue2);
+//		}
+//
+//		BusinessRule rule3 = new DefaultBusinessRule("if age < 1  then set result = '年龄小于1'");
+//		ExecutionResult result3 = rule3.execute(context).orElseThrow(() -> new NullPointerException("result is null"));
+//		Object resultValue3 = result3.getValue("result");
+//		if(resultValue3 != null) {
+//			result.add(user.getName() + "," + resultValue3);
+//		}
 
 		return result;
 	}

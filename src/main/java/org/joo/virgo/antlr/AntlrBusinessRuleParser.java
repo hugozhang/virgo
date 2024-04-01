@@ -28,8 +28,8 @@ public class AntlrBusinessRuleParser extends AbstractAntlrBusinessRuleParser<Bus
 		return parser;
 	}
 
-	protected ExecutionNode doParse(final BusinessRuleParser parser,final PredicateContext context) {
-		AntlrBusinessRuleVisitor visitor = new AntlrBusinessRuleVisitor(context);
+	protected ExecutionNode doParse(final BusinessRuleParser parser) {
+		AntlrBusinessRuleVisitor visitor = new AntlrBusinessRuleVisitor();
 		return visitor.visit(parser.businessRule());
 	}
 }

@@ -11,7 +11,7 @@ import org.joo.virgo.node.ExecutionNode;
 public abstract class AbstractAntlrBusinessRuleParser<L extends Lexer, P extends Parser> implements BusinessRuleParser {
 
 	@Override
-	public ExecutionNode parse(final String predicate, PredicateContext context) {
+	public ExecutionNode parse(final String predicate) {
 		CharStream stream = CharStreams.fromString(predicate);
 
 		Lexer lexer = createLexer(stream);
@@ -20,12 +20,12 @@ public abstract class AbstractAntlrBusinessRuleParser<L extends Lexer, P extends
 
 		P parser = createParser(tokens);
 
-		return doParse(parser,context);
+		return doParse(parser);
 	}
 
 	protected abstract L createLexer(CharStream stream);
 
 	protected abstract P createParser(CommonTokenStream tokens);
 
-	protected abstract ExecutionNode doParse(P parser,PredicateContext context);
+	protected abstract ExecutionNode doParse(P parser);
 }

@@ -12,8 +12,8 @@ public class ExpressionExecutionNode implements ExecutionNode {
 
 	private final SqlPredicate predicate;
 
-	public ExpressionExecutionNode(String predicate, PredicateContext context) {
-		this.predicate = new SqlPredicate(predicate,context);
+	public ExpressionExecutionNode(String predicate) {
+		this.predicate = new SqlPredicate(predicate);
 		this.predicate.checkForErrorAndThrow();
 	}
 

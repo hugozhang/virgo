@@ -11,14 +11,6 @@ import org.joo.virgo.node.ExpressionExecutionNode;
 
 public abstract class AbstractAntlrBusinessRuleVisitor extends BusinessRuleParserBaseVisitor<ExecutionNode> {
 
-
-    private final PredicateContext context;
-
-    public AbstractAntlrBusinessRuleVisitor(PredicateContext context) {
-        this.context = context;
-    }
-
-
     @Override
     public ExecutionNode visitConditionalExpr(final BusinessRuleParser.ConditionalExprContext ctx) {
         return createExpressionNode(ctx);
@@ -133,6 +125,6 @@ public abstract class AbstractAntlrBusinessRuleVisitor extends BusinessRuleParse
         CharStream cs = ctx.start.getTokenSource().getInputStream();
         int stopIndex = ctx.stop != null ? ctx.stop.getStopIndex() : -1;
 
-        return new ExpressionExecutionNode(cs.getText(new Interval(ctx.start.getStartIndex(), stopIndex)),context);
+        return new ExpressionExecutionNode(cs.getText(new Interval(ctx.start.getStartIndex(), stopIndex)));
     }
 }

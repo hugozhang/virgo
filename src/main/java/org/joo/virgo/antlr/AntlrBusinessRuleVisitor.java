@@ -11,10 +11,6 @@ import org.joo.virgo.node.MultiActionsExecutionNode;
 
 public class AntlrBusinessRuleVisitor extends AbstractAntlrBusinessRuleVisitor {
 
-	public AntlrBusinessRuleVisitor(PredicateContext context) {
-		super(context);
-	}
-
 	@Override
 	public ExecutionNode visitMultiActionsCtx(BusinessRuleParser.MultiActionsCtxContext ctx) {
 		ExecutionNode left = (ExecutionNode) visit(ctx.left);

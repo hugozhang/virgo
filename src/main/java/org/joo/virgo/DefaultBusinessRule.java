@@ -16,12 +16,12 @@ public class DefaultBusinessRule implements BusinessRule {
 
 	private final ExecutionNode node;
 
-	public DefaultBusinessRule(final String value,final RuleContext context) {
-		this(value, new AntlrBusinessRuleParser(),context);
+	public DefaultBusinessRule(final String value) {
+		this(value, new AntlrBusinessRuleParser());
 	}
 
-	public DefaultBusinessRule(final String value, final @NonNull BusinessRuleParser parser,final RuleContext context) {
-		this.node = parser.parse(value,context);
+	public DefaultBusinessRule(final String value, final @NonNull BusinessRuleParser parser) {
+		this.node = parser.parse(value);
 	}
 
 	@Override
