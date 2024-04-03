@@ -1,6 +1,7 @@
 package org.joo.virgo.test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -40,12 +41,12 @@ public class TestSimple {
 //	}
 
 
-	public List<User> getUsers() {
-		List<User> users = new ArrayList<User>();
-		users.add(new User("张三", 2, new Date(), new Date()));
-		users.add(new User("李四", 1, new Date(), new Date()));
-		users.add(new User("王五", 0, new Date(), new Date()));
-		return users;
+	public User getUser() {
+		Job job = new Job("程序员", 20000);
+
+		Job job2 = new Job("程序员2", 10000);
+
+        return new User("张三", 2, new Date(), new Date(), Arrays.asList(job, job2));
 	}
 
 	private List<String> executeRule (User user) {
@@ -53,12 +54,14 @@ public class TestSimple {
 		List<String> result = new ArrayList<String>();
 
 		RuleContext context = new RuleContext(user);
+//		context.setTempVariable("$jobs", user.getJobs());
 
-		BusinessRule rule0 = new DefaultBusinessRule("if  birthday > birthday2  then set result = '生日birthday > birthday2' else set result = '生日birthday 不大于 birthday2'");
+
+		BusinessRule rule0 = new DefaultBusinessRule("if (every for $job in jobs if $job.salary > 10000) then set result = join($jobs,'name') + ',薪水大于10000'");
 		ExecutionResult result0 = rule0.execute(context).orElseThrow(() -> new NullPointerException("result is null"));
 		Object resultValue0 = result0.getValue("result");
 		if(resultValue0 != null) {
-			result.add(user.getName() + "," + resultValue0);
+			result.add(resultValue0 + "");
 		}
 
 
@@ -90,10 +93,7 @@ public class TestSimple {
 	@Test
 	public void  testSimple2() {
 		List<String> result = new ArrayList<String>();
-		List<User> users = getUsers();
-		for (User user : users) {
-			result.addAll(executeRule(user));
-		}
+		result.addAll(executeRule(getUser()));
 		System.out.println(result);
 	}
 	

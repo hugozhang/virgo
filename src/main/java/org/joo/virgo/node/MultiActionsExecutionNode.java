@@ -5,9 +5,9 @@ import org.joo.virgo.model.ExecutionResult;
 
 public class MultiActionsExecutionNode implements ExecutionNode {
 
-	private ExecutionNode left;
+	private final ExecutionNode left;
 	
-	private ExecutionNode right;
+	private final ExecutionNode right;
 
 	public MultiActionsExecutionNode(ExecutionNode left, ExecutionNode right) {
 		this.left = left;

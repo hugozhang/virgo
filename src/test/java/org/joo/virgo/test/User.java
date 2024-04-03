@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.util.Date;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -16,5 +17,7 @@ public class User {
     private Date birthday;
 
     private Date birthday2;
+
+    private List<Job> jobs;
 
 }

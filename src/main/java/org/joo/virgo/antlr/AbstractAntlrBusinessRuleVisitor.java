@@ -3,14 +3,18 @@ package org.joo.virgo.antlr;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.misc.Interval;
-import org.joo.libra.PredicateContext;
-import org.joo.virgo.antlr.grammar.BusinessRuleParser;
+
 import org.joo.virgo.antlr.grammar.BusinessRuleParserBaseVisitor;
+import org.joo.virgo.antlr.grammar.BusinessRuleParser;
 import org.joo.virgo.node.ExecutionNode;
 import org.joo.virgo.node.ExpressionExecutionNode;
 
 public abstract class AbstractAntlrBusinessRuleVisitor extends BusinessRuleParserBaseVisitor<ExecutionNode> {
 
+    @Override
+    public ExecutionNode visitTermExpr(BusinessRuleParser.TermExprContext ctx) {
+        return createExpressionNode(ctx);
+    }
     @Override
     public ExecutionNode visitConditionalExpr(final BusinessRuleParser.ConditionalExprContext ctx) {
         return createExpressionNode(ctx);
