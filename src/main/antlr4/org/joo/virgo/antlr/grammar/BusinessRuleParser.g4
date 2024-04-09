@@ -24,7 +24,7 @@ bodyStatement:
 ;
 
 assignmentStatement:
-    TEMP_VAR EQUALS value = expression
+    indexName = TEMP_VAR EQUALS value = expression
 ;
 
 forInStatement:

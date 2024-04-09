@@ -51,7 +51,7 @@ public class AntlrBusinessRuleVisitor extends AbstractAntlrBusinessRuleVisitor {
 	public ExecutionNode visitForBodyStatementCtx(BusinessRuleParser.ForBodyStatementCtxContext ctx) {
 		if (ctx.assignmentVar != null) {
 			if (ctx.ifStatementVar != null) {
-				return new MultiActionsExecutionNode(new AssignExecutionNode(ctx.assignmentVar.VARIABLE().getText(), (ExpressionExecutionNode) visit(ctx.assignmentVar.value)), visit(ctx.ifStatementVar));
+				return new MultiActionsExecutionNode(new AssignExecutionNode(ctx.assignmentVar.indexName.getText(), (ExpressionExecutionNode) visit(ctx.assignmentVar.value)), visit(ctx.ifStatementVar));
 			} else if (ctx.forInStatementVar != null) {
 				BusinessRuleParser.ForInCtxContext forInCtxContext = (BusinessRuleParser.ForInCtxContext) ctx.forInStatementVar;
 				BusinessRuleParser.IfCtxContext condition = (BusinessRuleParser.IfCtxContext)forInCtxContext.condition;
@@ -59,7 +59,7 @@ public class AntlrBusinessRuleVisitor extends AbstractAntlrBusinessRuleVisitor {
 				IfExecutionNode ifExecutionNode = new IfExecutionNode((ExpressionExecutionNode) visit(condition.condition), visit(condition.impositions));
 
 				ForInIfExecutionNode forInIfExecutionNode = new ForInIfExecutionNode(forInCtxContext.indexName.getText(), (ExpressionExecutionNode)visit(forInCtxContext.listName),ifExecutionNode);
-				return new MultiActionsExecutionNode(new AssignExecutionNode(ctx.assignmentVar.VARIABLE().getText(), (ExpressionExecutionNode) visit(ctx.assignmentVar.value)), forInIfExecutionNode);
+				return new MultiActionsExecutionNode(new AssignExecutionNode(ctx.assignmentVar.indexName.getText(), (ExpressionExecutionNode) visit(ctx.assignmentVar.value)), forInIfExecutionNode);
 			}
 		} else {
 			if (ctx.ifStatementVar != null) {
