@@ -1,6 +1,5 @@
 package org.joo.virgo.node;
 
-import org.joo.libra.PredicateContext;
 import org.joo.libra.sql.SqlPredicate;
 import org.joo.virgo.RuleContext;
 import org.joo.virgo.model.ExecutionResult;

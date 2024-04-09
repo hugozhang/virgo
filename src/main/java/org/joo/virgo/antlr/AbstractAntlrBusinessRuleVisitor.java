@@ -125,6 +125,10 @@ public abstract class AbstractAntlrBusinessRuleVisitor extends BusinessRuleParse
         return createExpressionNode(ctx);
     }
 
+    public ExecutionNode visitTermCtx(BusinessRuleParser.TermCtxContext ctx) {
+        return createExpressionNode(ctx);
+    }
+
     protected ExecutionNode createExpressionNode(ParserRuleContext ctx) {
         CharStream cs = ctx.start.getTokenSource().getInputStream();
         int stopIndex = ctx.stop != null ? ctx.stop.getStopIndex() : -1;

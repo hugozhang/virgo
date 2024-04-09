@@ -1,29 +1,26 @@
 package org.joo.virgo;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 import org.joo.virgo.model.DefaultExecutionResult;
 import org.joo.virgo.model.ExecutionResult;
 
 import lombok.NonNull;
 
-public class MultiBusinessRule implements BusinessRule {
+public class MultiBusinessRule {
 
-	private BusinessRule[] rules;
+	private final BusinessRule[] rules;
 
 	public MultiBusinessRule(final @NonNull BusinessRule... rules) {
 		this.rules = rules;
 	}
 
-	@Override
-	public Optional<ExecutionResult> execute(RuleContext context) {
-		Map<String, Object> tmpResult = new HashMap<>();
+	public List<Map<String, Object>> execute(RuleContext context) {
+		List<Map<String, Object>> results = new ArrayList<>();
 		for (BusinessRule rule : rules) {
-            rule.execute(context).ifPresent(result -> tmpResult.putAll(result.getResults()));
+            rule.execute(context).ifPresent(result -> results.add(result.getResults()));
         }
-		return Optional.of(new DefaultExecutionResult(Collections.unmodifiableMap(tmpResult)));
+		return results;
+//		return Optional.of(new DefaultExecutionResult(Collections.unmodifiableMap(tmpResult)));
 	}
 }

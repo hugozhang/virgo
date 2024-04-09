@@ -12,22 +12,40 @@ import SqlParserCommon;
 
 businessRule
 :
-	phrase
-	| actions
+    bodyStatement
 ;
 
-phrase
+bodyStatement:
+    assignmentVar = assignmentStatement ?
+    ifStatementVar = ifStatement +   # forBodyStatementCtx
+    |
+    assignmentVar = assignmentStatement ? ?
+    forInStatementVar = forInStatement +    # forBodyStatementCtx
+;
+
+assignmentStatement:
+    TEMP_VAR EQUALS value = expression
+;
+
+forInStatement:
+    FOR indexName = TEMP_VAR IN listName = factor condition = ifStatement # forInCtx
+;
+
+
+
+ifStatement
 :
 	IF condition = expression THEN impositions = actions # ifCtx
-	| left = phrase ELSE right = phrase # elseCtx
-	| left = phrase ELSE impositions = actions # elseCtx
+	| left = ifStatement ELSE right = ifStatement # elseCtx
+	| left = ifStatement ELSE impositions = actions # elseCtx
 ;
 
 actions
 :
-	SET variable = VARIABLE EQUALS value = expression # assignCtx
+	variable = VARIABLE EQUALS value = expression # assignCtx
 	| left = actions SEMICOLON right = actions # multiActionsCtx
 	| left = actions SEMICOLON # multiActionsCtx
-	| nested = phrase # nestedPhraseCtx
+	| nested = ifStatement # nestedPhraseCtx
 	| LBRACE nested = actions RBRACE # nestedActionCtx
+	| term # termCtx
 ;

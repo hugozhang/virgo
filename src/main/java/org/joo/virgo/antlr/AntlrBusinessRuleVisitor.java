@@ -1,13 +1,7 @@
 package org.joo.virgo.antlr;
 
-import org.joo.virgo.node.AssignExecutionNode;
-import org.joo.virgo.node.ElseExecutionNode;
-import org.joo.virgo.node.ExecutionNode;
-import org.joo.virgo.node.ExpressionExecutionNode;
-import org.joo.virgo.node.IfExecutionNode;
-import org.joo.virgo.node.MultiActionsExecutionNode;
+import org.joo.virgo.node.*;
 
-import org.joo.virgo.antlr.grammar.BusinessRuleLexer;
 import org.joo.virgo.antlr.grammar.BusinessRuleParser;
 
 
@@ -52,4 +46,35 @@ public class AntlrBusinessRuleVisitor extends AbstractAntlrBusinessRuleVisitor {
 		ExpressionExecutionNode expression = (ExpressionExecutionNode) visit(ctx.value);
         return new AssignExecutionNode(variableName, expression);
 	}
+
+	@Override
+	public ExecutionNode visitForBodyStatementCtx(BusinessRuleParser.ForBodyStatementCtxContext ctx) {
+		if (ctx.assignmentVar != null) {
+			if (ctx.ifStatementVar != null) {
+				return new MultiActionsExecutionNode(new AssignExecutionNode(ctx.assignmentVar.VARIABLE().getText(), (ExpressionExecutionNode) visit(ctx.assignmentVar.value)), visit(ctx.ifStatementVar));
+			} else if (ctx.forInStatementVar != null) {
+				BusinessRuleParser.ForInCtxContext forInCtxContext = (BusinessRuleParser.ForInCtxContext) ctx.forInStatementVar;
+				BusinessRuleParser.IfCtxContext condition = (BusinessRuleParser.IfCtxContext)forInCtxContext.condition;
+
+				IfExecutionNode ifExecutionNode = new IfExecutionNode((ExpressionExecutionNode) visit(condition.condition), visit(condition.impositions));
+
+				ForInIfExecutionNode forInIfExecutionNode = new ForInIfExecutionNode(forInCtxContext.indexName.getText(), (ExpressionExecutionNode)visit(forInCtxContext.listName),ifExecutionNode);
+				return new MultiActionsExecutionNode(new AssignExecutionNode(ctx.assignmentVar.VARIABLE().getText(), (ExpressionExecutionNode) visit(ctx.assignmentVar.value)), forInIfExecutionNode);
+			}
+		} else {
+			if (ctx.ifStatementVar != null) {
+				return visit(ctx.ifStatementVar);
+			} else if (ctx.forInStatementVar != null) {
+				return visit(ctx.forInStatementVar);
+			}
+		}
+		throw new IllegalStateException("Invalid for body statement");
+	}
+
+
+
+
+
+
+
 }

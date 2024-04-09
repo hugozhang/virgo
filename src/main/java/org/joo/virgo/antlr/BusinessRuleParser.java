@@ -7,5 +7,5 @@ import org.joo.virgo.node.ExecutionNode;
 
 public interface BusinessRuleParser {
 
-	public ExecutionNode parse(String predicate) throws MalformedSyntaxException;
+	ExecutionNode parse(String predicate) throws MalformedSyntaxException;
 }

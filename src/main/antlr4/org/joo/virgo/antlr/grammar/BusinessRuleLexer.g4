@@ -14,4 +14,7 @@ ELSE: 					('ELSE' | 'else') ;
 
 SEMICOLON:				';' ;
 
-WS: 					(' ' | '\t')+ -> channel(HIDDEN) ;
+NEWLINE:                '\n';
+
+//WS: 					(' ' | '\t')+ -> channel(HIDDEN) ;
+WS : [ \t\r\n]+ -> skip;
