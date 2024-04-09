@@ -31,8 +31,6 @@ forInStatement:
     FOR indexName = TEMP_VAR IN listName = factor condition = ifStatement # forInCtx
 ;
 
-
-
 ifStatement
 :
 	IF condition = expression THEN impositions = actions # ifCtx
