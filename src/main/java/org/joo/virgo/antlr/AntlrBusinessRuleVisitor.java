@@ -49,11 +49,11 @@ public class AntlrBusinessRuleVisitor extends AbstractAntlrBusinessRuleVisitor {
 
 	@Override
 	public ExecutionNode visitForBodyStatementCtx(BusinessRuleParser.ForBodyStatementCtxContext ctx) {
+		BusinessRuleParser.ForInCtxContext forInCtxContext = (BusinessRuleParser.ForInCtxContext) ctx.forInStatementVar;
 		if (ctx.assignmentVar != null) {
 			if (ctx.ifStatementVar != null) {
 				return new MultiActionsExecutionNode(new AssignExecutionNode(ctx.assignmentVar.indexName.getText(), (ExpressionExecutionNode) visit(ctx.assignmentVar.value)), visit(ctx.ifStatementVar));
 			} else if (ctx.forInStatementVar != null) {
-				BusinessRuleParser.ForInCtxContext forInCtxContext = (BusinessRuleParser.ForInCtxContext) ctx.forInStatementVar;
 				BusinessRuleParser.IfCtxContext condition = (BusinessRuleParser.IfCtxContext)forInCtxContext.condition;
 
 				IfExecutionNode ifExecutionNode = new IfExecutionNode((ExpressionExecutionNode) visit(condition.condition), visit(condition.impositions));
@@ -63,18 +63,14 @@ public class AntlrBusinessRuleVisitor extends AbstractAntlrBusinessRuleVisitor {
 			}
 		} else {
 			if (ctx.ifStatementVar != null) {
-				return visit(ctx.ifStatementVar);
+				BusinessRuleParser.IfCtxContext condition = (BusinessRuleParser.IfCtxContext)forInCtxContext.condition;
+                return new IfExecutionNode((ExpressionExecutionNode) visit(condition.condition), visit(condition.impositions));
 			} else if (ctx.forInStatementVar != null) {
-				return visit(ctx.forInStatementVar);
+				BusinessRuleParser.IfCtxContext condition = (BusinessRuleParser.IfCtxContext)forInCtxContext.condition;
+				IfExecutionNode ifExecutionNode = new IfExecutionNode((ExpressionExecutionNode) visit(condition.condition), visit(condition.impositions));
+                return new ForInIfExecutionNode(forInCtxContext.indexName.getText(), (ExpressionExecutionNode)visit(forInCtxContext.listName),ifExecutionNode);
 			}
 		}
 		throw new IllegalStateException("Invalid for body statement");
 	}
-
-
-
-
-
-
-
 }
