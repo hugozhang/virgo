@@ -40,7 +40,7 @@ ifStatement
 
 actions
 :
-	variable = VARIABLE EQUALS value = expression # assignCtx
+	variable = TEMP_VAR EQUALS value = expression # assignCtx
 	| left = actions SEMICOLON right = actions # multiActionsCtx
 	| left = actions SEMICOLON # multiActionsCtx
 	| nested = ifStatement # nestedPhraseCtx

@@ -92,7 +92,7 @@ public class TestSimple {
 
 //		BusinessRule rule0 = new DefaultBusinessRule("if (exist for $job in jobs if $job.salary > 10000) then set result = join($jobs,'name') + ',薪水大于10000'");
 
-		BusinessRule rule0 = new DefaultBusinessRule("$a = [] for $job in jobs if $job.salary in [10000,20000] then print $job.name + ',' + $job.salary ;$a append $job.name + '，薪资满足'");
+		BusinessRule rule0 = new DefaultBusinessRule("$a = [] ;$b = [];  for $job in jobs if $job.salary in [10000,20000] then $a append $job.name + '，薪资满足';print $b");
 
 
 //		ExecutionResult result0 = rule0.execute(context).orElseThrow(() -> new NullPointerException("result is null"));

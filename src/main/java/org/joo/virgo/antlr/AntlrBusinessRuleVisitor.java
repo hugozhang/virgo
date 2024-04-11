@@ -44,37 +44,32 @@ public class AntlrBusinessRuleVisitor extends AbstractAntlrBusinessRuleVisitor {
 	public ExecutionNode visitAssignCtx(BusinessRuleParser.AssignCtxContext ctx) {
 		String variableName = ctx.variable.getText();
 		ExpressionExecutionNode expression = (ExpressionExecutionNode) visit(ctx.value);
-        return new AssignExecutionNode(variableName, expression);
+		return new AssignExecutionNode(variableName, expression);
 	}
 
 	@Override
-	public ExecutionNode visitForBodyStatementCtx(BusinessRuleParser.ForBodyStatementCtxContext ctx) {
-		BusinessRuleParser.ForInCtxContext forInCtxContext = (BusinessRuleParser.ForInCtxContext) ctx.forInStatementVar;
-		if (ctx.assignmentVar != null) {
-			if (ctx.ifStatementVar != null) {
-				return new MultiActionsExecutionNode(new AssignExecutionNode(ctx.assignmentVar.indexName.getText(), (ExpressionExecutionNode) visit(ctx.assignmentVar.value)), visit(ctx.ifStatementVar));
-			} else if (ctx.forInStatementVar != null) {
-				BusinessRuleParser.IfCtxContext condition = (BusinessRuleParser.IfCtxContext)forInCtxContext.condition;
-
-				IfExecutionNode ifExecutionNode = new IfExecutionNode((ExpressionExecutionNode) visit(condition.condition), visit(condition.impositions));
-
-				ForInIfExecutionNode forInIfExecutionNode = new ForInIfExecutionNode(forInCtxContext.indexName.getText(), (ExpressionExecutionNode)visit(forInCtxContext.listName),ifExecutionNode);
-				return new MultiActionsExecutionNode(new AssignExecutionNode(ctx.assignmentVar.indexName.getText(), (ExpressionExecutionNode) visit(ctx.assignmentVar.value)), forInIfExecutionNode);
-			}
-		} else {
-			if (ctx.ifStatementVar != null) {
-				if (forInCtxContext == null) {
-					return visit(ctx.ifStatementVar);
-				} else {
-					BusinessRuleParser.IfCtxContext condition = (BusinessRuleParser.IfCtxContext)forInCtxContext.condition;
-					return new IfExecutionNode((ExpressionExecutionNode) visit(condition.condition), visit(condition.impositions));
-				}
-			} else if (ctx.forInStatementVar != null) {
-				BusinessRuleParser.IfCtxContext condition = (BusinessRuleParser.IfCtxContext)forInCtxContext.condition;
-				IfExecutionNode ifExecutionNode = new IfExecutionNode((ExpressionExecutionNode) visit(condition.condition), visit(condition.impositions));
-                return new ForInIfExecutionNode(forInCtxContext.indexName.getText(), (ExpressionExecutionNode)visit(forInCtxContext.listName),ifExecutionNode);
-			}
-		}
-		throw new IllegalStateException("Invalid for body statement");
+	public ExecutionNode visitForInCtx(BusinessRuleParser.ForInCtxContext ctx) {
+		String indexName = ctx.indexName.getText();
+		ExpressionExecutionNode expressionExecutionNode = (ExpressionExecutionNode) visit(ctx.listName);
+		IfExecutionNode ifExecutionNode = (IfExecutionNode) visit(ctx.condition);
+		return new ForInIfExecutionNode(indexName, expressionExecutionNode, ifExecutionNode);
 	}
+
+    @Override
+    public ExecutionNode visitForBodyStatementCtx(BusinessRuleParser.ForBodyStatementCtxContext ctx) {
+        if (ctx.assignmentVar != null) {
+            if (ctx.ifStatementVar != null) {
+				return new MultiActionsExecutionNode(visit(ctx.assignmentVar),visit(ctx.ifStatementVar));
+            } else if (ctx.forInStatementVar != null) {
+				return new MultiActionsExecutionNode(visit(ctx.assignmentVar),visit(ctx.forInStatementVar));
+            }
+        } else {
+            if (ctx.ifStatementVar != null) {
+				return visit(ctx.ifStatementVar);
+            } else if (ctx.forInStatementVar != null) {
+				return visit(ctx.forInStatementVar);
+            }
+        }
+        throw new IllegalStateException("Invalid for body statement");
+    }
 }
