@@ -16,10 +16,10 @@ businessRule
 ;
 
 bodyStatement:
-    assignmentVar = assignmentStatement ?
+    assignmentVar = actions ?
     ifStatementVar = ifStatement +   # forBodyStatementCtx
     |
-    assignmentVar = assignmentStatement ? ?
+    assignmentVar = actions ?
     forInStatementVar = forInStatement +    # forBodyStatementCtx
 ;
 

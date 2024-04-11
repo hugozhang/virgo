@@ -18,6 +18,6 @@ public class ExpressionExecutionNode implements ExecutionNode {
 
 	@Override
 	public boolean execute(RuleContext context, ExecutionResult result) {
-		return predicate.satisfiedBy(context);
+		return predicate.test(context);
 	}
 }

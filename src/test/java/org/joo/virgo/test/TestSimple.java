@@ -1,9 +1,6 @@
 package org.joo.virgo.test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 import org.joo.virgo.BusinessRule;
 import org.joo.virgo.DefaultBusinessRule;
@@ -42,9 +39,9 @@ public class TestSimple {
 
 
 	public User getUser() {
-		Job job = new Job("程序员", 20000);
+		Job job = new Job("工作1", 20000);
 
-		Job job2 = new Job("程序员2", 10000);
+		Job job2 = new Job("工作2", 10000);
 
         return new User("张三", 2, new Date(), new Date(), Arrays.asList(job, job2));
 	}
@@ -53,19 +50,13 @@ public class TestSimple {
 
 		List<String> result = new ArrayList<String>();
 
-		RuleContext context = new RuleContext(user);
-//		context.setTempVariable("$jobs", user.getJobs());
-
-
-//		BusinessRule rule0 = new DefaultBusinessRule("if (exist for $job in jobs if $job.salary > 10000) then set result = join($jobs,'name') + ',薪水大于10000'");
-
-		BusinessRule rule0 = new DefaultBusinessRule("$a = [] for $job in jobs if $job.salary >= 0 then  $a append $job.salary");
-
-
-		ExecutionResult result0 = rule0.execute(context).orElseThrow(() -> new NullPointerException("result is null"));
-		Object resultValue0 = result0.getValue();
+		Object resultValue0 = getResultValue0(user);
 		if(resultValue0 != null) {
-			result.add(resultValue0 + "");
+			if(resultValue0 instanceof Collection) {
+				result.addAll((Collection) resultValue0);
+			} else {
+				result.add(resultValue0.toString());
+			}
 		}
 
 
@@ -94,10 +85,25 @@ public class TestSimple {
 		return result;
 	}
 
+	private static Object getResultValue0(User user) {
+		RuleContext context = new RuleContext(user);
+//		context.setTempVariable("$jobs", user.getJobs());
+
+
+//		BusinessRule rule0 = new DefaultBusinessRule("if (exist for $job in jobs if $job.salary > 10000) then set result = join($jobs,'name') + ',薪水大于10000'");
+
+		BusinessRule rule0 = new DefaultBusinessRule("$a = [] for $job in jobs if $job.salary in [10000,20000] then print $job.name + ',' + $job.salary ;$a append $job.name + '，薪资满足'");
+
+
+//		ExecutionResult result0 = rule0.execute(context).orElseThrow(() -> new NullPointerException("result is null"));
+
+		ExecutionResult result0 = rule0.execute(context).orElseThrow(() -> new NullPointerException("result is null"));
+		return result0.getValue();
+	}
+
 	@Test
 	public void  testSimple2() {
-		List<String> result = new ArrayList<String>();
-		result.addAll(executeRule(getUser()));
+        List<String> result = new ArrayList<String>(executeRule(getUser()));
 		System.out.println(result);
 	}
 	

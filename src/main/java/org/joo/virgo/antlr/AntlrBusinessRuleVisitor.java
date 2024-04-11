@@ -63,8 +63,12 @@ public class AntlrBusinessRuleVisitor extends AbstractAntlrBusinessRuleVisitor {
 			}
 		} else {
 			if (ctx.ifStatementVar != null) {
-				BusinessRuleParser.IfCtxContext condition = (BusinessRuleParser.IfCtxContext)forInCtxContext.condition;
-                return new IfExecutionNode((ExpressionExecutionNode) visit(condition.condition), visit(condition.impositions));
+				if (forInCtxContext == null) {
+					return visit(ctx.ifStatementVar);
+				} else {
+					BusinessRuleParser.IfCtxContext condition = (BusinessRuleParser.IfCtxContext)forInCtxContext.condition;
+					return new IfExecutionNode((ExpressionExecutionNode) visit(condition.condition), visit(condition.impositions));
+				}
 			} else if (ctx.forInStatementVar != null) {
 				BusinessRuleParser.IfCtxContext condition = (BusinessRuleParser.IfCtxContext)forInCtxContext.condition;
 				IfExecutionNode ifExecutionNode = new IfExecutionNode((ExpressionExecutionNode) visit(condition.condition), visit(condition.impositions));
