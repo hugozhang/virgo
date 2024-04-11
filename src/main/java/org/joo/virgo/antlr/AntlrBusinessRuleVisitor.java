@@ -62,7 +62,9 @@ public class AntlrBusinessRuleVisitor extends AbstractAntlrBusinessRuleVisitor {
 				return new MultiActionsExecutionNode(visit(ctx.assignmentVar),visit(ctx.ifStatementVar));
             } else if (ctx.forInStatementVar != null) {
 				return new MultiActionsExecutionNode(visit(ctx.assignmentVar),visit(ctx.forInStatementVar));
-            }
+            } else {
+				return visit(ctx.assignmentVar);
+			}
         } else {
             if (ctx.ifStatementVar != null) {
 				return visit(ctx.ifStatementVar);

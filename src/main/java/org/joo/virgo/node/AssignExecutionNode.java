@@ -15,6 +15,7 @@ public class AssignExecutionNode implements ExecutionNode {
 
 	@Override
 	public boolean execute(RuleContext context, ExecutionResult result) {
+		expression.execute(context, result);
 		Object literalValue = expression.getPredicate().calculateLiteralValue(context);
 //		Object literalValue = expression.execute(context,result);
 		context.setTempVariable(variableName, literalValue);
