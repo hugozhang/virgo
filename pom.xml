@@ -71,7 +71,7 @@
 				<configuration>
 					<listener>false</listener>
 					<visitor>true</visitor>
-					<libDirectory>${basedir}/src/main/antlr4/org/joo/virgo/antlr/grammar</libDirectory>
+					<libDirectory>src/main/antlr4/me/about/widget/antlr/grammar</libDirectory>
 				</configuration>
 				<executions>
 					<execution>
