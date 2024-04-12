@@ -131,6 +131,10 @@ public abstract class AbstractAntlrBusinessRuleVisitor extends BusinessRuleParse
         return createExpressionNode(ctx);
     }
 
+    public ExecutionNode visitMapExpr(BusinessRuleParser.MapExprContext ctx) {
+        return createExpressionNode(ctx);
+    }
+
 
     protected ExecutionNode createExpressionNode(ParserRuleContext ctx) {
         CharStream cs = ctx.start.getTokenSource().getInputStream();

@@ -5,6 +5,7 @@ import lombok.Data;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 @Data
 @AllArgsConstructor
@@ -19,5 +20,10 @@ public class User {
     private Date birthday2;
 
     private List<Job> jobs;
+
+
+    private String key;
+
+    private Map<String,Object> objectMap;
 
 }

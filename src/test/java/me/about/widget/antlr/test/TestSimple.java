@@ -35,11 +35,18 @@ public class TestSimple {
 
 
 	public User getUser() {
+
+		String key = "key1";
+
 		Job job = new Job("工作1", 20000);
 
 		Job job2 = new Job("工作2", 10000);
 
-        return new User("张三", 2, new Date(), new Date(), Arrays.asList(job, job2));
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("key1", "value1");
+		map.put("key2", "value2");
+
+        return new User("张三", 2, new Date(), new Date(), Arrays.asList(job, job2),key,map);
 	}
 
 	private List<String> executeRule (User user) {
@@ -95,9 +102,15 @@ public class TestSimple {
 
 //		BusinessRule rule0 = new DefaultBusinessRule("$a = sum(1,3)  if $a >= 4 then $c = 'ok'");
 
-		BusinessRule rule0 = new DefaultBusinessRule("$b = (exist for $job in jobs if $job.salary in [20000,40000]) ; print $b");
+//		BusinessRule rule0 = new DefaultBusinessRule("$b = (exist for $job in jobs if $job.salary in [20000,40000]) ; print $b");
 
 //		BusinessRule rule0 = new DefaultBusinessRule("$a=jobs;print $a[1:2]");
+
+//		BusinessRule rule0 = new DefaultBusinessRule("print objectMap[key]");
+
+		BusinessRule rule0 = new DefaultBusinessRule("$b = objectMap[key] ; if $b == '123' then $c= '123'");
+
+
 
 
 //		ExecutionResult result0 = rule0.execute(context).orElseThrow(() -> new NullPointerException("result is null"));
