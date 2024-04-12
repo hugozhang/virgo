@@ -124,10 +124,14 @@ public abstract class AbstractAntlrBusinessRuleVisitor extends BusinessRuleParse
     public ExecutionNode visitMathExpr(final BusinessRuleParser.MathExprContext ctx) {
         return createExpressionNode(ctx);
     }
-
-    public ExecutionNode visitTermCtx(BusinessRuleParser.TermCtxContext ctx) {
+    public ExecutionNode visitExpressionCtx(BusinessRuleParser.ExpressionCtxContext ctx) {
         return createExpressionNode(ctx);
     }
+
+    public ExecutionNode visitSliceExpr(BusinessRuleParser.SliceExprContext ctx) {
+        return createExpressionNode(ctx);
+    }
+
 
     protected ExecutionNode createExpressionNode(ParserRuleContext ctx) {
         CharStream cs = ctx.start.getTokenSource().getInputStream();

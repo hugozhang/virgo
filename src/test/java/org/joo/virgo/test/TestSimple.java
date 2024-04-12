@@ -97,7 +97,12 @@ public class TestSimple {
 
 //		BusinessRule rule0 = new DefaultBusinessRule("$b = (exist for $job in jobs if $job.salary in [20000,40000]) if $b is not empty then $a = '123'");
 
-		BusinessRule rule0 = new DefaultBusinessRule("$a = sum(1,3)  if $a >= 4 then $c = 'ok'");
+//		BusinessRule rule0 = new DefaultBusinessRule("$a = sum(1,3)  if $a >= 4 then $c = 'ok'");
+
+		BusinessRule rule0 = new DefaultBusinessRule("$b = (exist for $job in jobs if $job.salary in [20000,40000]) ; print $b");
+
+//		BusinessRule rule0 = new DefaultBusinessRule("$a=jobs;print $a[1:2]");
+
 
 //		ExecutionResult result0 = rule0.execute(context).orElseThrow(() -> new NullPointerException("result is null"));
 

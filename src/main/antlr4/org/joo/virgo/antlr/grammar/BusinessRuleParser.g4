@@ -45,5 +45,5 @@ actions
 	| left = actions SEMICOLON # multiActionsCtx
 	| nested = ifStatement # nestedPhraseCtx
 	| LBRACE nested = actions RBRACE # nestedActionCtx
-	| term # termCtx
+	| expression # expressionCtx
 ;
