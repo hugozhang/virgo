@@ -108,9 +108,13 @@ public class TestSimple {
 
 //		BusinessRule rule0 = new DefaultBusinessRule("print objectMap[key]");
 
-		BusinessRule rule0 = new DefaultBusinessRule("$b = objectMap[key] ; if $b == '123' then $c= '123'");
+//		BusinessRule rule0 = new DefaultBusinessRule("$b = objectMap[key] ; if $b == '123' then $c= '123'");
 
+//		BusinessRule rule0 = new DefaultBusinessRule("$b = (objectMap[key])[1:2] ; print $b");
 
+//		BusinessRule rule0 = new DefaultBusinessRule("$b = (objectMap[key])[0:2] ; print $b");
+
+		BusinessRule rule0 = new DefaultBusinessRule("$b = objectMap[key] ; $c = $b is null;print $c");
 
 
 //		ExecutionResult result0 = rule0.execute(context).orElseThrow(() -> new NullPointerException("result is null"));

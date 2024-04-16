@@ -12,7 +12,7 @@ import SqlParserCommon;
 
 businessRule
 :
-    bodyStatement
+    bodyStatement EOF
 ;
 
 bodyStatement:
