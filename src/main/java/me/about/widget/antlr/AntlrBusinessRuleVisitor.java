@@ -53,24 +53,4 @@ public class AntlrBusinessRuleVisitor extends AbstractAntlrBusinessRuleVisitor {
 		IfExecutionNode ifExecutionNode = (IfExecutionNode) visit(ctx.condition);
 		return new ForInIfExecutionNode(indexName, expressionExecutionNode, ifExecutionNode);
 	}
-
-    @Override
-    public ExecutionNode visitForBodyStatementCtx(BusinessRuleParser.ForBodyStatementCtxContext ctx) {
-        if (ctx.assignmentVar != null) {
-            if (ctx.ifStatementVar != null) {
-				return new MultiActionsExecutionNode(visit(ctx.assignmentVar),visit(ctx.ifStatementVar));
-            } else if (ctx.forInStatementVar != null) {
-				return new MultiActionsExecutionNode(visit(ctx.assignmentVar),visit(ctx.forInStatementVar));
-            } else {
-				return visit(ctx.assignmentVar);
-			}
-        } else {
-            if (ctx.ifStatementVar != null) {
-				return visit(ctx.ifStatementVar);
-            } else if (ctx.forInStatementVar != null) {
-				return visit(ctx.forInStatementVar);
-            }
-        }
-        throw new IllegalStateException("Invalid for body statement");
-    }
 }

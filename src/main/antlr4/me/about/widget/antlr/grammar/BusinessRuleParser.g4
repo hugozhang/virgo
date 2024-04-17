@@ -12,23 +12,24 @@ import SqlParserCommon;
 
 businessRule
 :
-    bodyStatement EOF
+    actions EOF
 ;
 
-bodyStatement:
-    assignmentVar = actions ?
-    ifStatementVar = ifStatement ?   # forBodyStatementCtx
-    |
-    assignmentVar = actions ?
-    forInStatementVar = forInStatement ?    # forBodyStatementCtx
-;
-
-assignmentStatement:
-    indexName = TEMP_VAR EQUALS value = expression
-;
+//bodyStatement:
+//    assignmentVar = actions ?
+//    ifStatementVar = ifStatement ?   # forBodyStatementCtx
+//    |
+//    assignmentVar = actions ?
+//    forInStatementVar = forInStatement ?    # forBodyStatementCtx
+//;
+//
+//assignmentStatement:
+//    indexName = TEMP_VAR EQUALS value = expression
+//;
 
 forInStatement:
     FOR indexName = TEMP_VAR IN listName = factor condition = ifStatement # forInCtx
+    | ifStatement # ifStatementCtx
 ;
 
 ifStatement
@@ -43,7 +44,7 @@ actions
 	variable = TEMP_VAR EQUALS value = expression # assignCtx
 	| left = actions SEMICOLON right = actions # multiActionsCtx
 	| left = actions SEMICOLON # multiActionsCtx
-	| nested = ifStatement # nestedPhraseCtx
+	| nested = forInStatement # nestedPhraseCtx
 	| LBRACE nested = actions RBRACE # nestedActionCtx
 	| expression # expressionCtx
 ;

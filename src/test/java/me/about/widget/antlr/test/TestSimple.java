@@ -38,15 +38,16 @@ public class TestSimple {
 
 		String key = "key1";
 
-		Job job = new Job("工作1", 20000);
-
-		Job job2 = new Job("工作2", 10000);
+//		Job job = new Job("工作1", 20000);
+//
+//		Job job2 = new Job("工作2", 10000);
 
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("key1", "value1");
 		map.put("key2", "value2");
+		return new User();
 
-        return new User("张三", 2, new Date(), new Date(), Arrays.asList(job, job2),key,map);
+//        return new User("张三", 2, Arrays.asList(job, job2),key,map,new Date(), new Date());
 	}
 
 	private List<String> executeRule (User user) {
@@ -114,7 +115,7 @@ public class TestSimple {
 
 //		BusinessRule rule0 = new DefaultBusinessRule("$b = (objectMap[key])[0:2] ; print $b");
 
-		BusinessRule rule0 = new DefaultBusinessRule("$b = objectMap[key] ; $c = $b is null;print $c");
+		BusinessRule rule0 = new DefaultBusinessRule("$b = (objectMap[key])[0:2] ; print $b;if $b == 'va' then $c=123;for $job in jobs if $job.salary in [10000,20000] then print $job.salary");
 
 
 //		ExecutionResult result0 = rule0.execute(context).orElseThrow(() -> new NullPointerException("result is null"));

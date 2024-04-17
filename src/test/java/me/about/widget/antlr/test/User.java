@@ -8,16 +8,12 @@ import java.util.List;
 import java.util.Map;
 
 @Data
-@AllArgsConstructor
 public class User {
 
     private String name;
 
     private int age;
 
-    private Date birthday;
-
-    private Date birthday2;
 
     private List<Job> jobs;
 
@@ -25,5 +21,10 @@ public class User {
     private String key;
 
     private Map<String,Object> objectMap;
+
+
+    private Date birthday;
+
+    private Date birthday2;
 
 }

@@ -15,7 +15,11 @@ public class MultiBusinessRule {
 	public List<Map<String, Object>> execute(RuleContext context) {
 		List<Map<String, Object>> results = new ArrayList<>();
 		for (BusinessRule rule : rules) {
-            rule.execute(context).ifPresent(result -> results.add(result.getResults()));
+            rule.execute(context).ifPresent(result -> {
+				if (!result.getResults().isEmpty()) {
+					results.add(result.getResults());
+				}
+			});
         }
 		return results;
 //		return Optional.of(new DefaultExecutionResult(Collections.unmodifiableMap(tmpResult)));
