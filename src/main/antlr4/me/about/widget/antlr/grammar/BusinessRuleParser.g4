@@ -12,20 +12,8 @@ import SqlParserCommon;
 
 businessRule
 :
-    actions
+     actions NEWLINE? EOF
 ;
-
-//bodyStatement:
-//    assignmentVar = actions ?
-//    ifStatementVar = ifStatement ?   # forBodyStatementCtx
-//    |
-//    assignmentVar = actions ?
-//    forInStatementVar = forInStatement ?    # forBodyStatementCtx
-//;
-//
-//assignmentStatement:
-//    indexName = TEMP_VAR EQUALS value = expression
-//;
 
 forInStatement:
     FOR indexName = TEMP_VAR IN listName = factor condition = ifStatement # forInCtx
@@ -51,7 +39,7 @@ actions
 	variable = TEMP_VAR EQUALS value = expression # actionCtx
 	| left = actions SEMICOLON right = actions # multiActionCtx
 	| left = actions SEMICOLON # multiActionCtx
-	| nested = forInStatement # nestedPhraseCtx
+	| nested = forInStatement  # nestedPhraseCtx
 	| LBRACE nested = actions RBRACE # nestedActionCtx
 	| expression # expressionCtx
 	| nested = assigns # returnCtx

@@ -12,7 +12,12 @@ ELSE: 					('ELSE' | 'else') ;
 
 SEMICOLON:				';' ;
 
-NEWLINE:                '\n';
+//NEWLINE:                '\n';
 
-//WS: 					(' ' | '\t')+ -> channel(HIDDEN) ;
-WS : [ \t\r\n]+ -> skip;
+// 匹配Windows（`\r\n`）、Unix（`\n`）或Mac（`\r`）风格的换行符，并将其发送到隐藏通道（不影响解析）
+NEWLINE: '\r'? '\n' -> channel(HIDDEN);
+
+
+
+WS: 					(' ' | '\t')+ -> channel(HIDDEN) ;
+//WS : [ \t\r\n]+ -> skip;

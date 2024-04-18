@@ -2,6 +2,7 @@ package me.about.widget.antlr;
 
 import me.about.widget.antlr.grammar.BusinessRuleParser;
 import me.about.widget.node.*;
+import org.antlr.v4.runtime.tree.RuleNode;
 
 
 public class AntlrBusinessRuleVisitor extends AbstractAntlrBusinessRuleVisitor {
@@ -75,4 +76,17 @@ public class AntlrBusinessRuleVisitor extends AbstractAntlrBusinessRuleVisitor {
 		IfExecutionNode ifExecutionNode = (IfExecutionNode) visit(ctx.condition);
 		return new ForInIfExecutionNode(indexName, expressionExecutionNode, ifExecutionNode);
 	}
+
+
+	/***
+	 * 当节点EOF时nextResult解出来是null 其它这个时候应该忽略它，用上一个节点的内容，不然会最终影响结果值
+	 * @param aggregate
+	 * @param nextResult
+	 * @return
+	 */
+	@Override
+	public ExecutionNode aggregateResult(ExecutionNode aggregate, ExecutionNode nextResult) {
+		return nextResult == null ? aggregate : nextResult;
+	}
+
 }

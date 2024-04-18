@@ -3,7 +3,7 @@ package me.about.widget;
 import java.util.Collections;
 import java.util.Optional;
 
-import me.about.widget.antlr.BusinessRuleParser;
+import me.about.widget.antlr.ExecutionNodeParser;
 import me.about.widget.antlr.AntlrBusinessRuleParser;
 import me.about.widget.model.DefaultExecutionResult;
 import me.about.widget.model.ExecutionResult;
@@ -20,7 +20,7 @@ public class DefaultBusinessRule implements BusinessRule {
 		this(value, new AntlrBusinessRuleParser());
 	}
 
-	public DefaultBusinessRule(final String value, final @NonNull BusinessRuleParser parser) {
+	public DefaultBusinessRule(final String value, final @NonNull ExecutionNodeParser parser) {
 		this.node = parser.parse(value);
 	}
 
