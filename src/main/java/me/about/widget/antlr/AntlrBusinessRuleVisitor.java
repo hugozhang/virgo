@@ -2,7 +2,6 @@ package me.about.widget.antlr;
 
 import me.about.widget.antlr.grammar.BusinessRuleParser;
 import me.about.widget.node.*;
-import org.antlr.v4.runtime.tree.RuleNode;
 
 
 public class AntlrBusinessRuleVisitor extends AbstractAntlrBusinessRuleVisitor {
