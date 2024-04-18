@@ -124,7 +124,7 @@ public class TestSimple {
 //				"if $b is not empty then e=3;f=5" );
 //
 //
-			BusinessRule rule0 = new DefaultBusinessRule("print 1;a=123;");
+			BusinessRule rule0 = new DefaultBusinessRule("print 1;a=123 a;");
 
 
 
