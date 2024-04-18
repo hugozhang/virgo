@@ -1,9 +1,8 @@
 package me.about.widget.antlr;
 
-import me.about.widget.antlr.exception.RuleSyntaxException;
+import me.about.widget.antlr.exception.SyntaxException;
 import me.about.widget.antlr.grammar.BusinessRuleParser;
 import me.about.widget.node.ExecutionNode;
-import me.about.widget.node.ExpressionExecutionNode;
 import org.antlr.v4.runtime.*;
 import me.about.widget.antlr.grammar.BusinessRuleLexer;
 import org.antlr.v4.runtime.misc.Interval;
@@ -36,12 +35,12 @@ class BusinessRuleErrorListener extends BaseErrorListener {
 	@Override
 	public void syntaxError(final Recognizer<?, ?> recognizer, final Object offendingSymbol, final int line,
 			final int charPositionInLine, final String msg, final RecognitionException e) {
-		BusinessRuleParser businessRuleParser = (BusinessRuleParser) recognizer;
-		ParserRuleContext ctx = businessRuleParser.getContext();
+		Parser parser = (Parser) recognizer;
+		ParserRuleContext ctx = parser.getContext();
 
 		CharStream cs = ctx.start.getTokenSource().getInputStream();
 		String ruleText = cs.getText(new Interval(ctx.start.getStartIndex(),cs.size()));
 
-		throw new RuleSyntaxException(ruleText,line,charPositionInLine,msg);
+		throw new SyntaxException(ruleText,line,charPositionInLine,msg);
 	}
 }
