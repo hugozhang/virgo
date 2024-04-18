@@ -5,7 +5,7 @@ lexer grammar BusinessRuleLexer;
 //}
 
 import SqlLexerCommon;
-
+RETURN:				('RETURN' | 'return') ;
 SET:					('SET' | 'set') ;
 //IF: 					('IF' | 'if') ;
 THEN: 					('THEN' | 'then') ;

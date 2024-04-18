@@ -115,7 +115,10 @@ public class TestSimple {
 
 //		BusinessRule rule0 = new DefaultBusinessRule("$b = (objectMap[key])[0:2] ; print $b");
 
-		BusinessRule rule0 = new DefaultBusinessRule("$b = (objectMap[key])[0:2] ; print $b;if $b == 'va' then $c=123;for $job in jobs if $job.salary in [10000,20000] then print $job.salary");
+//		BusinessRule rule0 = new DefaultBusinessRule("$b = (objectMap[key])[0:2] ; print $b;if $b == 'va' then $c=123;for $job in jobs if $job.salary in [10000,20000] then print $job.salary");
+
+		BusinessRule rule0 = new DefaultBusinessRule("return a=123");
+
 
 
 //		ExecutionResult result0 = rule0.execute(context).orElseThrow(() -> new NullPointerException("result is null"));

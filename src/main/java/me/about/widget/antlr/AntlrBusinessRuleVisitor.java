@@ -7,12 +7,21 @@ import me.about.widget.node.*;
 public class AntlrBusinessRuleVisitor extends AbstractAntlrBusinessRuleVisitor {
 
 	@Override
-	public ExecutionNode visitMultiActionsCtx(BusinessRuleParser.MultiActionsCtxContext ctx) {
+	public ExecutionNode visitMultiActionCtx(BusinessRuleParser.MultiActionCtxContext ctx) {
 		ExecutionNode left = visit(ctx.left);
 		if (ctx.right == null)
 			return left;
 		ExecutionNode right = visit(ctx.right);
-		return new MultiActionsExecutionNode(left, right);
+		return new MultiActionExecutionNode(left, right);
+	}
+
+	@Override
+	public ExecutionNode visitMultiAssignCtx(BusinessRuleParser.MultiAssignCtxContext ctx) {
+		ExecutionNode left = visit(ctx.left);
+		if (ctx.right == null)
+			return left;
+		ExecutionNode right = visit(ctx.right);
+		return new MultiAssignExecutionNode(left, right);
 	}
 
 	@Override
@@ -24,6 +33,12 @@ public class AntlrBusinessRuleVisitor extends AbstractAntlrBusinessRuleVisitor {
 	public ExecutionNode visitNestedActionCtx(BusinessRuleParser.NestedActionCtxContext ctx) {
 		return visit(ctx.nested);
 	}
+
+	@Override
+	public ExecutionNode visitReturnCtx(BusinessRuleParser.ReturnCtxContext ctx) {
+		return visit(ctx.nested);
+	}
+
 
 	@Override
 	public ExecutionNode visitIfCtx(BusinessRuleParser.IfCtxContext ctx) {
@@ -44,6 +59,13 @@ public class AntlrBusinessRuleVisitor extends AbstractAntlrBusinessRuleVisitor {
 		String variableName = ctx.variable.getText();
 		ExpressionExecutionNode expression = (ExpressionExecutionNode) visit(ctx.value);
 		return new AssignExecutionNode(variableName, expression);
+	}
+
+	@Override
+	public ExecutionNode visitActionCtx(BusinessRuleParser.ActionCtxContext ctx) {
+		String variableName = ctx.variable.getText();
+		ExpressionExecutionNode expression = (ExpressionExecutionNode) visit(ctx.value);
+		return new ActionExecutionNode(variableName, expression);
 	}
 
 	@Override

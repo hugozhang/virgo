@@ -54,132 +54,132 @@ public class TestMulti {
 	public void testSimple() {
 
 		String[] rules = new String[] {
-				"if age >= 10 and age < 20 then $a = name;$b = age;$c = '年龄在10-20岁之间'",
-				"if age >= 20 and age < 40 then $a = name;$b = age;$c = '年龄在20-40岁之间'",
-				"for $job in jobs if $job.salary >= 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水大于1w' + $job.salary",
-				"for $job in jobs if $job.salary < 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水小于1w' + $job.salary",
+//				"if age >= 10 and age < 20 then $a = name;$b = age;$c = '年龄在10-20岁之间'",
+//				"if age >= 20 and age < 40 then $a = name;$b = age;$c = '年龄在20-40岁之间'",
+//				"for $job in jobs if $job.salary >= 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水大于1w' + $job.salary",
+//				"for $job in jobs if $job.salary < 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水小于1w' + $job.salary",
+//
+//				"if age >= 10 and age < 20 then $a = name;$b = age;$c = '年龄在10-20岁之间'",
+//				"if age >= 20 and age < 40 then $a = name;$b = age;$c = '年龄在20-40岁之间'",
+//				"for $job in jobs if $job.salary >= 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水大于1w' + $job.salary",
+//				"for $job in jobs if $job.salary < 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水小于1w' + $job.salary",
+//
+//				"if age >= 10 and age < 20 then $a = name;$b = age;$c = '年龄在10-20岁之间'",
+//				"if age >= 20 and age < 40 then $a = name;$b = age;$c = '年龄在20-40岁之间'",
+//				"for $job in jobs if $job.salary >= 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水大于1w' + $job.salary",
+//				"for $job in jobs if $job.salary < 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水小于1w' + $job.salary",
+//
+//				"if age >= 10 and age < 20 then $a = name;$b = age;$c = '年龄在10-20岁之间'",
+//				"if age >= 20 and age < 40 then $a = name;$b = age;$c = '年龄在20-40岁之间'",
+//				"for $job in jobs if $job.salary >= 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水大于1w' + $job.salary",
+//				"for $job in jobs if $job.salary < 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水小于1w' + $job.salary",
+//
+//
+//				"if age >= 10 and age < 20 then $a = name;$b = age;$c = '年龄在10-20岁之间'",
+//				"if age >= 20 and age < 40 then $a = name;$b = age;$c = '年龄在20-40岁之间'",
+//				"for $job in jobs if $job.salary >= 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水大于1w' + $job.salary",
+//				"for $job in jobs if $job.salary < 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水小于1w' + $job.salary",
+//
+//				"if age >= 10 and age < 20 then $a = name;$b = age;$c = '年龄在10-20岁之间'",
+//				"if age >= 20 and age < 40 then $a = name;$b = age;$c = '年龄在20-40岁之间'",
+//				"for $job in jobs if $job.salary >= 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水大于1w' + $job.salary",
+//				"for $job in jobs if $job.salary < 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水小于1w' + $job.salary",
+//
+//				"if age >= 10 and age < 20 then $a = name;$b = age;$c = '年龄在10-20岁之间'",
+//				"if age >= 20 and age < 40 then $a = name;$b = age;$c = '年龄在20-40岁之间'",
+//				"for $job in jobs if $job.salary >= 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水大于1w' + $job.salary",
+//				"for $job in jobs if $job.salary < 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水小于1w' + $job.salary",
+//
+//				"if age >= 10 and age < 20 then $a = name;$b = age;$c = '年龄在10-20岁之间'",
+//				"if age >= 20 and age < 40 then $a = name;$b = age;$c = '年龄在20-40岁之间'",
+//				"for $job in jobs if $job.salary >= 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水大于1w' + $job.salary",
+//				"for $job in jobs if $job.salary < 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水小于1w' + $job.salary",
+//
+//
+//				"if age >= 10 and age < 20 then $a = name;$b = age;$c = '年龄在10-20岁之间'",
+//				"if age >= 20 and age < 40 then $a = name;$b = age;$c = '年龄在20-40岁之间'",
+//				"for $job in jobs if $job.salary >= 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水大于1w' + $job.salary",
+//				"for $job in jobs if $job.salary < 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水小于1w' + $job.salary",
+//
+//				"if age >= 10 and age < 20 then $a = name;$b = age;$c = '年龄在10-20岁之间'",
+//				"if age >= 20 and age < 40 then $a = name;$b = age;$c = '年龄在20-40岁之间'",
+//				"for $job in jobs if $job.salary >= 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水大于1w' + $job.salary",
+//				"for $job in jobs if $job.salary < 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水小于1w' + $job.salary",
+//
+//				"if age >= 10 and age < 20 then $a = name;$b = age;$c = '年龄在10-20岁之间'",
+//				"if age >= 20 and age < 40 then $a = name;$b = age;$c = '年龄在20-40岁之间'",
+//				"for $job in jobs if $job.salary >= 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水大于1w' + $job.salary",
+//				"for $job in jobs if $job.salary < 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水小于1w' + $job.salary",
+//
+//				"if age >= 10 and age < 20 then $a = name;$b = age;$c = '年龄在10-20岁之间'",
+//				"if age >= 20 and age < 40 then $a = name;$b = age;$c = '年龄在20-40岁之间'",
+//				"for $job in jobs if $job.salary >= 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水大于1w' + $job.salary",
+//				"for $job in jobs if $job.salary < 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水小于1w' + $job.salary",
+//
+//
+//				"if age >= 10 and age < 20 then $a = name;$b = age;$c = '年龄在10-20岁之间'",
+//				"if age >= 20 and age < 40 then $a = name;$b = age;$c = '年龄在20-40岁之间'",
+//				"for $job in jobs if $job.salary >= 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水大于1w' + $job.salary",
+//				"for $job in jobs if $job.salary < 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水小于1w' + $job.salary",
+//
+//				"if age >= 10 and age < 20 then $a = name;$b = age;$c = '年龄在10-20岁之间'",
+//				"if age >= 20 and age < 40 then $a = name;$b = age;$c = '年龄在20-40岁之间'",
+//				"for $job in jobs if $job.salary >= 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水大于1w' + $job.salary",
+//				"for $job in jobs if $job.salary < 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水小于1w' + $job.salary",
+//
+//				"if age >= 10 and age < 20 then $a = name;$b = age;$c = '年龄在10-20岁之间'",
+//				"if age >= 20 and age < 40 then $a = name;$b = age;$c = '年龄在20-40岁之间'",
+//				"for $job in jobs if $job.salary >= 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水大于1w' + $job.salary",
+//				"for $job in jobs if $job.salary < 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水小于1w' + $job.salary",
+//
+//				"if age >= 10 and age < 20 then $a = name;$b = age;$c = '年龄在10-20岁之间'",
+//				"if age >= 20 and age < 40 then $a = name;$b = age;$c = '年龄在20-40岁之间'",
+//				"for $job in jobs if $job.salary >= 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水大于1w' + $job.salary",
+//				"for $job in jobs if $job.salary < 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水小于1w' + $job.salary",
+//
+//
+//				"if age >= 10 and age < 20 then $a = name;$b = age;$c = '年龄在10-20岁之间'",
+//				"if age >= 20 and age < 40 then $a = name;$b = age;$c = '年龄在20-40岁之间'",
+//				"for $job in jobs if $job.salary >= 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水大于1w' + $job.salary",
+//				"for $job in jobs if $job.salary < 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水小于1w' + $job.salary",
+//
+//				"if age >= 10 and age < 20 then $a = name;$b = age;$c = '年龄在10-20岁之间'",
+//				"if age >= 20 and age < 40 then $a = name;$b = age;$c = '年龄在20-40岁之间'",
+//				"for $job in jobs if $job.salary >= 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水大于1w' + $job.salary",
+//				"for $job in jobs if $job.salary < 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水小于1w' + $job.salary",
+//
+//				"if age >= 10 and age < 20 then $a = name;$b = age;$c = '年龄在10-20岁之间'",
+//				"if age >= 20 and age < 40 then $a = name;$b = age;$c = '年龄在20-40岁之间'",
+//				"for $job in jobs if $job.salary >= 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水大于1w' + $job.salary",
+//				"for $job in jobs if $job.salary < 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水小于1w' + $job.salary",
+//
+//				"if age >= 10 and age < 20 then $a = name;$b = age;$c = '年龄在10-20岁之间'",
+//				"if age >= 20 and age < 40 then $a = name;$b = age;$c = '年龄在20-40岁之间'",
+//				"for $job in jobs if $job.salary >= 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水大于1w' + $job.salary",
+//				"for $job in jobs if $job.salary < 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水小于1w' + $job.salary",
+//
+//
+//				"if age >= 10 and age < 20 then $a = name;$b = age;$c = '年龄在10-20岁之间'",
+//				"if age >= 20 and age < 40 then $a = name;$b = age;$c = '年龄在20-40岁之间'",
+//				"for $job in jobs if $job.salary >= 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水大于1w' + $job.salary",
+//				"for $job in jobs if $job.salary < 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水小于1w' + $job.salary",
+//
+//				"if age >= 10 and age < 20 then $a = name;$b = age;$c = '年龄在10-20岁之间'",
+//				"if age >= 20 and age < 40 then $a = name;$b = age;$c = '年龄在20-40岁之间'",
+//				"for $job in jobs if $job.salary >= 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水大于1w' + $job.salary",
+//				"for $job in jobs if $job.salary < 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水小于1w' + $job.salary",
+//
+//				"if age >= 10 and age < 20 then $a = name;$b = age;$c = '年龄在10-20岁之间'",
+//				"if age >= 20 and age < 40 then $a = name;$b = age;$c = '年龄在20-40岁之间'",
+//				"for $job in jobs if $job.salary >= 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水大于1w' + $job.salary",
+//				"for $job in jobs if $job.salary < 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水小于1w' + $job.salary",
+//
+//				"if age >= 10 and age < 20 then $a = name;$b = age;$c = '年龄在10-20岁之间'",
+//				"if age >= 20 and age < 40 then $a = name;$b = age;$c = '年龄在20-40岁之间'",
+//				"for $job in jobs if $job.salary >= 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水大于1w' + $job.salary",
+//				"for $job in jobs if $job.salary < 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水小于1w' + $job.salary",
 
-				"if age >= 10 and age < 20 then $a = name;$b = age;$c = '年龄在10-20岁之间'",
-				"if age >= 20 and age < 40 then $a = name;$b = age;$c = '年龄在20-40岁之间'",
-				"for $job in jobs if $job.salary >= 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水大于1w' + $job.salary",
-				"for $job in jobs if $job.salary < 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水小于1w' + $job.salary",
-
-				"if age >= 10 and age < 20 then $a = name;$b = age;$c = '年龄在10-20岁之间'",
-				"if age >= 20 and age < 40 then $a = name;$b = age;$c = '年龄在20-40岁之间'",
-				"for $job in jobs if $job.salary >= 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水大于1w' + $job.salary",
-				"for $job in jobs if $job.salary < 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水小于1w' + $job.salary",
-
-				"if age >= 10 and age < 20 then $a = name;$b = age;$c = '年龄在10-20岁之间'",
-				"if age >= 20 and age < 40 then $a = name;$b = age;$c = '年龄在20-40岁之间'",
-				"for $job in jobs if $job.salary >= 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水大于1w' + $job.salary",
-				"for $job in jobs if $job.salary < 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水小于1w' + $job.salary",
-
-
-				"if age >= 10 and age < 20 then $a = name;$b = age;$c = '年龄在10-20岁之间'",
-				"if age >= 20 and age < 40 then $a = name;$b = age;$c = '年龄在20-40岁之间'",
-				"for $job in jobs if $job.salary >= 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水大于1w' + $job.salary",
-				"for $job in jobs if $job.salary < 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水小于1w' + $job.salary",
-
-				"if age >= 10 and age < 20 then $a = name;$b = age;$c = '年龄在10-20岁之间'",
-				"if age >= 20 and age < 40 then $a = name;$b = age;$c = '年龄在20-40岁之间'",
-				"for $job in jobs if $job.salary >= 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水大于1w' + $job.salary",
-				"for $job in jobs if $job.salary < 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水小于1w' + $job.salary",
-
-				"if age >= 10 and age < 20 then $a = name;$b = age;$c = '年龄在10-20岁之间'",
-				"if age >= 20 and age < 40 then $a = name;$b = age;$c = '年龄在20-40岁之间'",
-				"for $job in jobs if $job.salary >= 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水大于1w' + $job.salary",
-				"for $job in jobs if $job.salary < 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水小于1w' + $job.salary",
-
-				"if age >= 10 and age < 20 then $a = name;$b = age;$c = '年龄在10-20岁之间'",
-				"if age >= 20 and age < 40 then $a = name;$b = age;$c = '年龄在20-40岁之间'",
-				"for $job in jobs if $job.salary >= 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水大于1w' + $job.salary",
-				"for $job in jobs if $job.salary < 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水小于1w' + $job.salary",
-
-
-				"if age >= 10 and age < 20 then $a = name;$b = age;$c = '年龄在10-20岁之间'",
-				"if age >= 20 and age < 40 then $a = name;$b = age;$c = '年龄在20-40岁之间'",
-				"for $job in jobs if $job.salary >= 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水大于1w' + $job.salary",
-				"for $job in jobs if $job.salary < 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水小于1w' + $job.salary",
-
-				"if age >= 10 and age < 20 then $a = name;$b = age;$c = '年龄在10-20岁之间'",
-				"if age >= 20 and age < 40 then $a = name;$b = age;$c = '年龄在20-40岁之间'",
-				"for $job in jobs if $job.salary >= 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水大于1w' + $job.salary",
-				"for $job in jobs if $job.salary < 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水小于1w' + $job.salary",
-
-				"if age >= 10 and age < 20 then $a = name;$b = age;$c = '年龄在10-20岁之间'",
-				"if age >= 20 and age < 40 then $a = name;$b = age;$c = '年龄在20-40岁之间'",
-				"for $job in jobs if $job.salary >= 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水大于1w' + $job.salary",
-				"for $job in jobs if $job.salary < 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水小于1w' + $job.salary",
-
-				"if age >= 10 and age < 20 then $a = name;$b = age;$c = '年龄在10-20岁之间'",
-				"if age >= 20 and age < 40 then $a = name;$b = age;$c = '年龄在20-40岁之间'",
-				"for $job in jobs if $job.salary >= 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水大于1w' + $job.salary",
-				"for $job in jobs if $job.salary < 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水小于1w' + $job.salary",
-
-
-				"if age >= 10 and age < 20 then $a = name;$b = age;$c = '年龄在10-20岁之间'",
-				"if age >= 20 and age < 40 then $a = name;$b = age;$c = '年龄在20-40岁之间'",
-				"for $job in jobs if $job.salary >= 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水大于1w' + $job.salary",
-				"for $job in jobs if $job.salary < 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水小于1w' + $job.salary",
-
-				"if age >= 10 and age < 20 then $a = name;$b = age;$c = '年龄在10-20岁之间'",
-				"if age >= 20 and age < 40 then $a = name;$b = age;$c = '年龄在20-40岁之间'",
-				"for $job in jobs if $job.salary >= 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水大于1w' + $job.salary",
-				"for $job in jobs if $job.salary < 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水小于1w' + $job.salary",
-
-				"if age >= 10 and age < 20 then $a = name;$b = age;$c = '年龄在10-20岁之间'",
-				"if age >= 20 and age < 40 then $a = name;$b = age;$c = '年龄在20-40岁之间'",
-				"for $job in jobs if $job.salary >= 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水大于1w' + $job.salary",
-				"for $job in jobs if $job.salary < 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水小于1w' + $job.salary",
-
-				"if age >= 10 and age < 20 then $a = name;$b = age;$c = '年龄在10-20岁之间'",
-				"if age >= 20 and age < 40 then $a = name;$b = age;$c = '年龄在20-40岁之间'",
-				"for $job in jobs if $job.salary >= 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水大于1w' + $job.salary",
-				"for $job in jobs if $job.salary < 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水小于1w' + $job.salary",
-
-
-				"if age >= 10 and age < 20 then $a = name;$b = age;$c = '年龄在10-20岁之间'",
-				"if age >= 20 and age < 40 then $a = name;$b = age;$c = '年龄在20-40岁之间'",
-				"for $job in jobs if $job.salary >= 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水大于1w' + $job.salary",
-				"for $job in jobs if $job.salary < 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水小于1w' + $job.salary",
-
-				"if age >= 10 and age < 20 then $a = name;$b = age;$c = '年龄在10-20岁之间'",
-				"if age >= 20 and age < 40 then $a = name;$b = age;$c = '年龄在20-40岁之间'",
-				"for $job in jobs if $job.salary >= 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水大于1w' + $job.salary",
-				"for $job in jobs if $job.salary < 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水小于1w' + $job.salary",
-
-				"if age >= 10 and age < 20 then $a = name;$b = age;$c = '年龄在10-20岁之间'",
-				"if age >= 20 and age < 40 then $a = name;$b = age;$c = '年龄在20-40岁之间'",
-				"for $job in jobs if $job.salary >= 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水大于1w' + $job.salary",
-				"for $job in jobs if $job.salary < 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水小于1w' + $job.salary",
-
-				"if age >= 10 and age < 20 then $a = name;$b = age;$c = '年龄在10-20岁之间'",
-				"if age >= 20 and age < 40 then $a = name;$b = age;$c = '年龄在20-40岁之间'",
-				"for $job in jobs if $job.salary >= 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水大于1w' + $job.salary",
-				"for $job in jobs if $job.salary < 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水小于1w' + $job.salary",
-
-
-				"if age >= 10 and age < 20 then $a = name;$b = age;$c = '年龄在10-20岁之间'",
-				"if age >= 20 and age < 40 then $a = name;$b = age;$c = '年龄在20-40岁之间'",
-				"for $job in jobs if $job.salary >= 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水大于1w' + $job.salary",
-				"for $job in jobs if $job.salary < 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水小于1w' + $job.salary",
-
-				"if age >= 10 and age < 20 then $a = name;$b = age;$c = '年龄在10-20岁之间'",
-				"if age >= 20 and age < 40 then $a = name;$b = age;$c = '年龄在20-40岁之间'",
-				"for $job in jobs if $job.salary >= 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水大于1w' + $job.salary",
-				"for $job in jobs if $job.salary < 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水小于1w' + $job.salary",
-
-				"if age >= 10 and age < 20 then $a = name;$b = age;$c = '年龄在10-20岁之间'",
-				"if age >= 20 and age < 40 then $a = name;$b = age;$c = '年龄在20-40岁之间'",
-				"for $job in jobs if $job.salary >= 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水大于1w' + $job.salary",
-				"for $job in jobs if $job.salary < 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水小于1w' + $job.salary",
-
-				"if age >= 10 and age < 20 then $a = name;$b = age;$c = '年龄在10-20岁之间'",
-				"if age >= 20 and age < 40 then $a = name;$b = age;$c = '年龄在20-40岁之间'",
-				"for $job in jobs if $job.salary >= 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水大于1w' + $job.salary",
-				"for $job in jobs if $job.salary < 10000 then $a = name;$b = age;$c = '工作' + $job.name + ',薪水小于1w' + $job.salary",
-
-				"$aa = name[0:1] ; if $aa == 'a' || $aa == 'A'  then $a = name;$b = age;$c = '名字首字母是a或A'",
+				"$aa = name[0:1] ; if $aa == 'a' || $aa == 'A'  then a = name;b = age;c = '名字首字母是a或A';print $aa",
 
 		};
 
