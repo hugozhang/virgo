@@ -38,14 +38,18 @@ public class TestSimple {
 
 		String key = "key1";
 
-//		Job job = new Job("工作1", 20000);
-//
-//		Job job2 = new Job("工作2", 10000);
+		Job job = new Job("工作1", 20000);
+
+		Job job2 = new Job("工作2", 10000);
 
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("key1", "value1");
 		map.put("key2", "value2");
-		return new User();
+
+		User user = new User();
+		user.setJobs(Arrays.asList(job, job2));
+
+		return user;
 
 //        return new User("张三", 2, Arrays.asList(job, job2),key,map,new Date(), new Date());
 	}
@@ -96,7 +100,7 @@ public class TestSimple {
 
 //		BusinessRule rule0 = new DefaultBusinessRule("if (exist for $job in jobs if $job.salary > 10000) then set result = join($jobs,'name') + ',薪水大于10000'");
 
-//		BusinessRule rule0 = new DefaultBusinessRule("$a = [] ;$b = [];  for $job in jobs if $job.salary in [10000,20000] then $a append $job.name + '，薪资满足';print $b");
+		BusinessRule rule0 = new DefaultBusinessRule("$a = [] ;$b = [];  for $job in jobs if $job.salary in [10000,20000] then $a append $job.name + '，薪资满足';print $a");
 
 
 //		BusinessRule rule0 = new DefaultBusinessRule("$b = (exist for $job in jobs if $job.salary in [20000,40000]) if $b is not empty then $a = '123'");
@@ -124,11 +128,11 @@ public class TestSimple {
 //				"if $b is not empty then e=3;f=5" );
 //
 //
-			BusinessRule rule0 = new DefaultBusinessRule("// 456 \n" +
-					"/**\n" +
-					"你好！！！\n" +
-					"**/\n" +
-					"print 1;a=123; 333");
+//			BusinessRule rule0 = new DefaultBusinessRule("// 456 \n" +
+//					"/**\n" +
+//					"你好！！！\n" +
+//					"**/\n" +
+//					"print 1;a=123; 333");
 
 
 

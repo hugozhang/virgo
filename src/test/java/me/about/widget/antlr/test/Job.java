@@ -10,4 +10,11 @@ public class Job {
 
     private int salary;
 
+    public Job() {
+    }
+    public Job(String name, int salary) {
+        this.name = name;
+        this.salary = salary;
+    }
+
 }
