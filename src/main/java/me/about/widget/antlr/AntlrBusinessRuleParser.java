@@ -35,12 +35,16 @@ class BusinessRuleErrorListener extends BaseErrorListener {
 	@Override
 	public void syntaxError(final Recognizer<?, ?> recognizer, final Object offendingSymbol, final int line,
 			final int charPositionInLine, final String msg, final RecognitionException e) {
-		Parser parser = (Parser) recognizer;
-		ParserRuleContext ctx = parser.getContext();
 
-		CharStream cs = ctx.start.getTokenSource().getInputStream();
-		String ruleText = cs.getText(new Interval(ctx.start.getStartIndex(),cs.size()));
-
+		String ruleText = null;
+		IntStream intStream = e.getInputStream();
+		if (intStream instanceof CharStream) {
+			CharStream cs = (CharStream) intStream;
+			ruleText = cs.getText(new Interval(0,cs.size()));
+		} else if (intStream instanceof TokenStream) {
+			TokenStream ts = (TokenStream) intStream;
+			ruleText = ts.getText();
+		}
 		throw new SyntaxException(ruleText,line,charPositionInLine,msg);
 	}
 }
