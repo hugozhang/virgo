@@ -4,7 +4,7 @@ import org.joo.libra.support.exceptions.MalformedSyntaxException;
 
 public class SyntaxException extends MalformedSyntaxException {
     public SyntaxException(String rule, int line, int pos, String msg) {
-        super("\nrule: " + rule + "\nline: " + line + "\npos: " + pos + "\nmsg: " + msg);
+        super("\nrule: " + rule + ",line: " + line + ",pos: " + pos + "msg: " + msg);
     }
 
     public SyntaxException(Throwable cause) {
