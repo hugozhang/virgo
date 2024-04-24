@@ -36,8 +36,19 @@ class BusinessRuleErrorListener extends BaseErrorListener {
 	public void syntaxError(final Recognizer<?, ?> recognizer, final Object offendingSymbol, final int line,
 			final int charPositionInLine, final String msg, final RecognitionException e) {
 
+		IntStream intStream;
+		if (recognizer instanceof BusinessRuleParser) {
+			BusinessRuleParser businessRuleParser = (BusinessRuleParser) recognizer;
+			intStream = businessRuleParser.getInputStream();
+		} else if (recognizer instanceof BusinessRuleLexer) {
+			BusinessRuleLexer businessRuleLexer = (BusinessRuleLexer) recognizer;
+			intStream = businessRuleLexer.getInputStream();
+		} else {
+			throw new IllegalArgumentException("recognizer must be BusinessRuleParser or BusinessRuleLexer");
+		}
+
 		String ruleText = null;
-		IntStream intStream = e.getInputStream();
+//		IntStream intStream = e.getInputStream();
 		if (intStream instanceof CharStream) {
 			CharStream cs = (CharStream) intStream;
 			ruleText = cs.getText(new Interval(0,cs.size()));

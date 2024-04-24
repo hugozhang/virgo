@@ -135,7 +135,7 @@ public class TestSimple {
 //					"print 1;a=123; 333");
 
 
-		BusinessRule rule0 = new DefaultBusinessRule("if true then a = testService::test('123',567),b=23");
+		BusinessRule rule0 = new DefaultBusinessRule("name:|:a()");
 
 
 
